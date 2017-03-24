@@ -38,7 +38,6 @@ def handle(df):
 train = handle(train)
 train.drop(['pymnt_plan','desc','title','verification_status_joint'],1,inplace=True)
 train.fillna(-99999,inplace=True)
-#print(train.head())
 
 test = handle(test)
 test.drop(['pymnt_plan','desc','title','verification_status_joint'],1,inplace=True)
@@ -48,8 +47,6 @@ print("handling done")
 X = np.array(train.drop(['loan_status'],1).astype(float))
 X = preprocessing.scale(X)
 y = np.array(train['loan_status'])
-
-#limit = int(math.ceil(0.01*len(test)))
 
 X_test = np.array(test).astype(float)
 X_test = preprocessing.scale(X_test)
@@ -67,19 +64,6 @@ clf = pickle.load(pickle_in)
 plot_importance(clf)
 plt.show()
 print("pickle opened")
-# correct = 0
-# for i in range(len(X)):
-#     predict_me = np.array(X[i].astype(float))
-#     predict_me = predict_me.reshape(-1,len(predict_me))
-#     prediction = clf.predict(predict_me)
-#     if i % 500 == 0:
-#        print(i)
-#     if prediction[0]== y[i]:
-#         correct+=1
-#
-# print("accuracy: ",correct/len(X))
-
-
 
 predictions = clf.predict_proba(X_test)
 print(predictions[:,1])
