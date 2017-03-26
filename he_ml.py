@@ -65,8 +65,8 @@ with open("xgb.pickle","wb") as f:
 
 pickle_in = open("xgb.pickle","rb")
 clf = pickle.load(pickle_in)
-plot_importance(clf)
-plt.show()
+# plot_importance(clf)
+# plt.show()
 print("pickle opened")
 
 predictions = clf.predict_proba(X_test)[:,1]
