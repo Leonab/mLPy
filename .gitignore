@@ -8,11 +8,13 @@ pids
 *.pid
 *.seed
 *.pickle
+*.csv
 
 # OS or Editor folders
 ._*
 .cache
 .pickle
+.csv
 .DS_Store
 .idea
 .project
